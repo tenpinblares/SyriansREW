@@ -82,10 +82,8 @@ def handle_reject_consent_cookie(channel_url):
         m = re.search(r"<input type=\"hidden\" name=\"bl\" value=\"([^\"]*)\"", r.text)
         if m:
             data = {
-                "gl":"DE",
                 "pc":"yt",
                 "continue":channel_url,
-                "x":"6",
                 "bl":m.group(1),
                 "hl":"de",
                 "set_eom":"true"
@@ -155,7 +153,6 @@ def parse_vtt(file_path):
     time_pattern = "^(.*) align:start position:0%"
 
     with open(file_path, "r") as f:
-        lines = f.readlines()
         for count, line in enumerate(lines):
             time_match = re.match(time_pattern, line)
 
